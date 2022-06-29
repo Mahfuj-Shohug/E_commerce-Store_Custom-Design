@@ -65,6 +65,35 @@ color: #000;
 padding-top: 9px;
 }
 
+.dn-inline-popup.dn-search-page-top{
+    width: 30% !important;
+    top: 36px;
+    left: 70%;
+}
+
+#properties_product_details .dn-price-container{
+    float: right;
+    padding-right: 3px;
+    padding-left: 4px;
+}
+#properties_product_details .dn-unit-price{
+    font-weight: bold;
+    display: flex;
+}
+
+#properties_product_details .dn-unit-price::after{
+    content: "; Total " !important;
+    font-weight: normal !important;
+}
+
+.dn-product-display .dn-product-qty-breakdown-container div.dn-product-discounts-container{
+    border: 2px solid #FEC621;
+    padding: 10px;
+    box-shadow: 10px 5px 5px #CC2647;
+    font-weight: bold;
+    background-color: #FEC621;
+}
+
 @media (max-width: 768px){
     .big-header{
         display: none !important;
