@@ -64,3 +64,35 @@ padding-top: 6px;
 color: #000;
 padding-top: 9px;
 }
+
+@media (max-width: 768px){
+    .big-header{
+        display: none !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .call-email a{
+        font-size: 12px;
+    }
+    .call-email span{
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .call-email a{
+        font-size: 10px;
+    }
+    .call-email span{
+        font-size: 9px;
+    }
+    .top-section-row{
+        padding-top: 4px;
+    }
+}
+
