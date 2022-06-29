@@ -1,0 +1,66 @@
+#header{
+    margin-top: 0px;
+}
+.top-bar{
+    background-color: #CC2647;
+    height: 35px;
+}
+.top-section-row{
+    padding-top: 3px;
+}
+.call-email a{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+.call-email a:hover{
+    color: #fff;
+}
+.call-email span{
+    color: #FEC621 !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+.dn-other-nav{
+    background-color: #CC2647;
+    font-size: 14px;
+    color: #fff;
+}
+.dn-other-nav .dn-nav-search{
+    color: #fff !important;
+}
+.dn-nav-login{
+    color: #fff !important;
+    font-size: 14px;
+}
+.navigation-bar{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#site-logo-large img{
+    height: 40px !important;
+    width: 150px !important;            
+}
+.dn-inline-header nav.dn-nav-main{
+    padding-top: 8px !important;
+}
+.dn-inline-header .dn-shopping-cart-icon-over-right-container{
+text-align: right !important;
+font-size: 25px;
+}
+
+.dn-shopping-cart-icon-over-right-container:before{
+border: 2px solid;
+height: 35px;
+width: 35px;
+border-radius: 50%;
+background-color: #000;
+color: #fff;
+padding-right: 7px;
+padding-top: 6px;
+}
+
+.dn-small-header .dn-menu-icon, header .dn-small-header-always .dn-menu-icon{
+color: #000;
+padding-top: 9px;
+}
