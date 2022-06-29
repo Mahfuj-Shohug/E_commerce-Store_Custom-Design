@@ -30,17 +30,11 @@
                         </p>
                     </div>
                     <div class="col top-section">
+                       
                         <div class="dn-other">
                             <div class="dn-other-nav-container">
                                 <nav class="dn-other-nav">
                                     <[{"snippet":"nav_user"}]>
-                                        <div class="dn-nav-cart"><span id='cart_link'>
-                                                <div class="dn-shopping-cart-icon-over-right-container"
-                                                    onclick="dnInlinePopup(this, 'dn_cart_over_right_popup', { valign:'none', halign: 'none', backgroundClass: 'dn-cart-over-right', delayBackground:400});">
-                                                    <span data-cart-items="<[{" variable":"CART.QTY"}]>">
-                                                        <[{"variable":"CART.QTY"}]></span></div>
-                                            </span>
-                                        </div>
                                         <div class="dn-nav-search">
                                             <div class="dn-search-icon"
                                                 onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' });">
@@ -54,7 +48,44 @@
             </div>
         </div>
         <div class="navigation-bar">
-
+            <div class="container">
+                <div class="row custom-css">
+                    <div class="col">
+                        <div id="site-logo-large">
+                            <[{"widget":{"settings":{"size":"large"},"code":"site_logo","id":"large_logo"}}]>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="dn-header-nav-container dn-behaviour" data-behaviour="horizontalFill">
+                            <[{"snippet":"nav_main_large"}]>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="dn-nav-cart"><span id='cart_link'>
+                            <div class="dn-shopping-cart-icon-over-right-container"
+                                onclick="dnInlinePopup(this, 'dn_cart_over_right_popup', { valign:'none', halign: 'none', backgroundClass: 'dn-cart-over-right', delayBackground:400});">
+                                <span data-cart-items="<[{" variable":"CART.QTY"}]>">
+                                    <[{"variable":"CART.QTY"}]></span></div>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dn-small-header">
+            <div class="dn-small-logo-container" id="site-logo-small">
+                <[{"widget":{"settings":{"size":"small"},"code":"site_logo","id":"small_logo"}}]>
+            </div>
+            <div class="dn-nav-search">
+                <div class="dn-search-icon"
+                    onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' });">
+                </div>
+            </div>
+            <div class="dn-menu-icon dn-behaviour" data-behaviour="dropdownMenu"
+                data-dropdown-menu-id="main_nav_dropdown"
+                data-dropdown-menu-class="dn-nav-dropdown-container dn-nav-main-dropdown-container dn-nav-main-dropdown-small">
+                <div class="dn-dropdown-anchor"></div>
+            </div>
         </div>
     </header>
     <div class="dn-content">
