@@ -3,18 +3,60 @@
 
 <head>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
-        #header{
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        #header {
             margin-top: 0px;
             font-family: 'Poppins', sans-serif;
         }
-        .top-bar{
+
+        .top-bar {
             width: 100%;
             height: 20px;
             background-color: #FEC621;
         }
 
+        .grid-container {
+            height: auto;
+            display: grid;
+            grid-template-columns: auto 20% 10%;
+        }
 
+        .grid-container-nav {
+            height: auto;
+            display: grid;
+            grid-template-columns: auto 20%;
+        }
+
+        .navigation-bar {
+            border-top: 2px solid #FEC621;
+        }
+
+        .main-top-50 {
+            text-align: left;
+        }
+
+        .main-top-40 {
+            text-align: right;
+        }
+
+        .main-top-10 {
+            text-align: center;
+        }
+        .search-bar{
+            cursor: pointer;
+            float: left;
+        }
+
+
+        .dn-shopping-cart-icon-over-right-container:before{
+            border: 2px solid #fff;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: #FEC621;
+            color: #000;
+        }
     </style>
     <[{"snippet":"system_style_sheets"}]>
         <[{"snippet":"system_head_js"}]>
@@ -25,70 +67,54 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
             <[{"snippet":"system_head_meta_tags"}]>
                 <[{"snippet":"favicon"}]>
-                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-                        rel="stylesheet"
-                        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-                        crossorigin="anonymous">
                     <link rel="stylesheet"
                         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
                         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
                         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body class="dn-site">
     <header id="header">
+        <[{"snippet":"pos_message_header"}]>
         <div class="top-bar">
-
         </div>
         <div class="logo-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div id="site-logo-large">
-                            <a href="/">
-                                <img src="https://brownuniversity.secure-decoration.com/rshared/ssc/i/riq/6997411/200/200/ffffff/0/0/image.png?ts=1656495098"
-                                    alt="logo">
-                            </a>
-                        </div>
+            <div class="grid-container">
+                <div class="main-top-50">
+                    <div id="site-logo-large">
+                        <[{"widget":{"settings":{"size":"large"},"code":"site_logo","id":"large_logo"}}]>
                     </div>
-                    <div class="col">
-                        <p class="call-email">
-                            <span>Call Us: </span>
-                            <a href="tel:+012 345 6789">+012 345 6789</a>
-                        </p>
-                        <p>
-                            <div class="dn-nav-search">
-                                <div class="dn-search-icon"
-                                    onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' });">
-                                </div>
+                </div>
+                <div class="main-top-40">
+                    <p class="call-email">
+                        <span>Call Us: </span>
+                        <a href="tel:+012 345 6789">+012 345 6789</a>
+                            <div class="search-bar" onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' })">
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
                             <div>
                                 <span>Email Us</span>
-                                <a href="mailto:mikaela@gobardown.com"><i class="fa fa-envelope"
-                                        aria-hidden="true"></i></a>
+                                <a href="mailto:mikaela@gobardown.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
                             </div>
-                        </p>
-                    </div>
-                    <div class="col">
-                        <span id='cart_link'>
-                            <div class="dn-shopping-cart-icon-over-right-container"
-                                onclick="dnInlinePopup(this, 'dn_cart_over_right_popup', { valign:'none', halign: 'none', backgroundClass: 'dn-cart-over-right', delayBackground:400});">
-                                <span data-cart-items="<[{" variable":"CART.QTY"}]>">
-                                    <[{"variable":"CART.QTY"}]></span></div>
-                        </span>
-                    </div>
+                    </p>
+                </div>
+                <div class="main-top-10">
+                    <span>
+                        <div class="dn-shopping-cart-icon-over-right-container"
+                            onclick="dnInlinePopup(this, 'dn_cart_over_right_popup', { valign:'none', halign: 'none', backgroundClass: 'dn-cart-over-right', delayBackground:400});">
+                            <span data-cart-items="<[{" variable":"CART.QTY"}]>"><[{"variable":"CART.QTY"}]></span>
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
         <div class="navigation-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md 6">
-                        <[{"snippet":"nav_main_large"}]>
-                    </div>
-                    <div class="col-md-6">
-                        <[{"snippet":"nav_user"}]>
-                    </div>
+            <div class="grid-container-nav">
+                <div class="navi">
+                    <[{"snippet":"nav_main_large"}]>
+                </div>
+                <div class="user">
+                    <[{"snippet":"nav_user"}]>
                 </div>
             </div>
         </div>
@@ -114,12 +140,52 @@
     </div>
     <footer dynamic_area="footer">
         <!-- remove the 'dynamic_area' attribute if you want to change the html of the footer -->
+        <div class="dn-page-section dn-page-section-24f9d21b-af43-4f34-b44d-9eec788688b0 dn-wrapper dn-page-section-margin-top-none dn-page-section-margin-bottom-none dn-use-page-margin dn-limit-content-width"
+            id="dn_section_24f9d21b-af43-4f34-b44d-9eec788688b0" style="z-index: 3;">
+            <div class="dn-page-section-margin">
+                <div class="dn-page-section-content">
+                    <div class="dn-padding-container" id="dn_s_pc_24f9d21b-af43-4f34-b44d-9eec788688b0">
+                        <!--
+  -->
+                        <div class="dn-page-columns-container">
+                            <!--
+  -->
+                        </div>
+                        <!--
+-->
+                    </div>
+                </div>
+            </div>
+            <div class="dn-background-container">
+                <div>
+                    <div class="dn-background-image-container"></div>
+                </div>
+            </div>
+        </div>
+        <div class="dn-page-section dn-page-section-footer1 dn-page-section-cols-1 dn-page-section-spacing-xlarge dn-page-section-margin-top-default dn-page-section-margin-bottom-none dn-use-page-margin"
+            id="dn_section_footer1" style="z-index: 2;">
+            <div class="dn-page-section-margin">
+                <div class="dn-page-section-content">
+                    <div class="dn-padding-container" id="dn_s_pc_footer1">
+                        <!--
+  -->
+                        <div class="dn-page-columns-container">
+                            <!--
+  -->
+                        </div>
+                        <!--
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
         <[{"snippet":"pos_message_footer"}]>
+
     </footer>
     <div class="dn-inline-popup dn-shopping-cart-icon-over-right-popup" id="dn_cart_over_right_popup">
         <[{"widget":{"settings":{"show_name":true,"show_summary":0,"thumbnail_size":100,"empty_message":"Your cart is
             empty","empty_quote_message":"Your quote is
-            empty","show_checkout_link":true,"show_thumbnail":true,"show_item_link":true},"code":"shopping_cart","id":"cart"}}]>
+            empty","show_checkout_link":true,"show_thumbnail":true,"show_price":true,"show_item_link":true},"code":"shopping_cart","id":"cart"}}]>
     </div>
     <div class="dn-inline-popup dn-search-page-top" id="dn_search_popup_pt">
         <form action="/search/results" method="get">
@@ -135,7 +201,6 @@
             <div class="dn-close" onclick="dnCloseInlinePopup();"></div>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
