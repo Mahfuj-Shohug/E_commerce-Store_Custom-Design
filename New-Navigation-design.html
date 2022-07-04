@@ -4,59 +4,136 @@
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
         #header {
             margin-top: 0px;
             font-family: 'Poppins', sans-serif;
         }
-
         .top-bar {
             width: 100%;
             height: 20px;
             background-color: #FEC621;
         }
-
+        .logo-bar{
+            padding-bottom: 10px;
+            padding-top: 20px;
+        }
         .grid-container {
             height: auto;
             display: grid;
-            grid-template-columns: auto 20% 10%;
+            grid-template-columns: auto 30% 150px;
         }
-
         .grid-container-nav {
             height: auto;
             display: grid;
-            grid-template-columns: auto 20%;
+            grid-template-columns: auto 30% 150px;
         }
-
         .navigation-bar {
             border-top: 2px solid #FEC621;
+            height: 60px !important;
+            padding-top: 15px;
         }
-
         .main-top-50 {
             text-align: left;
+            padding-left: 110px;
         }
-
         .main-top-40 {
-            text-align: right;
+            text-align: right !important;
+            padding-right: 20px;
         }
-
         .main-top-10 {
-            text-align: center;
+            text-align: left;
         }
         .search-bar{
             cursor: pointer;
-            float: left;
+            color: #000;
+            font-size: 16px;
+            text-align: start !important;
+
         }
-
-
         .dn-shopping-cart-icon-over-right-container:before{
             border: 2px solid #fff;
-            height: 50px;
-            width: 50px;
+            height: 45px;
+            width: 45px;
             border-radius: 50%;
             background-color: #FEC621;
             color: #000;
+            padding-top: 12px;
+            padding-left: 13px;
+            font-size: 16px;
         }
+        .dn-inline-header nav.dn-nav-main{
+            text-align: start !important;
+            padding-left: 98px;
+        }
+        #user{
+            display: inline-flex;
+            text-align: right!important;
+            padding-right: 25px!important;
+        }
+        #site-logo-large img{
+            height: 48px !important;
+            width: 150px !important;            
+        }
+        .call-email{
+            margin-bottom: 0px !important;
+            padding-left: 10px;
+        }
+        .call-email span{
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .call-email a{
+            color: #CC2647;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .icon i{
+            color: #000;
+            font-size: 14px;
+        }
+        .fa-magnifying-glass:before, .fa-search:before{
+            font-size: 25px;
+            padding-left: 8px;
+        }
+        .dn-shopping-cart-icon-over-right-container span{
+            margin-right: 105px;
+        }
+        .dn-inline-popup.dn-search-page-top{
+            width: 30% !important;
+            left: 62% !important;
+            top: 150px !important;
+        }
+
+        #properties_product_details .dn-price-container{
+            float: right;
+            padding-right: 3px;
+            padding-left: 4px;
+        }
+        #properties_product_details .dn-unit-price{
+            font-weight: bold;
+            display: flex;
+        }
+
+        #properties_product_details .dn-unit-price::after{
+            content: "; Total " !important;
+            font-weight: normal !important;
+        }
+        .dn-inline-popup.dn-search-page-top .dn-close{
+            display: inline-block!important;
+            width: 0%!important;
+            height: 0px!important;
+            vertical-align: top!important;
+            text-align: right!important;
+        }
+        .dn-product-display .dn-product-qty-breakdown-container div.dn-product-discounts-container{
+            border: 2px solid #000000;
+            padding: 10px;
+            box-shadow: 10px 5px 15px #555353;
+            font-weight: bold;
+            background: #fff;
+        }
+
     </style>
     <[{"snippet":"system_style_sheets"}]>
         <[{"snippet":"system_head_js"}]>
@@ -72,7 +149,6 @@
                         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
                         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body class="dn-site">
     <header id="header">
         <[{"snippet":"pos_message_header"}]>
@@ -82,19 +158,18 @@
             <div class="grid-container">
                 <div class="main-top-50">
                     <div id="site-logo-large">
-                        <[{"widget":{"settings":{"size":"large"},"code":"site_logo","id":"large_logo"}}]>
+                        <a href="/">
+                            <img src="https://brownuniversity.secure-decoration.com/rshared/ssc/i/riq/6997411/200/200/ffffff/0/0/image.png?ts=1656495098" alt="logo">
+                        </a>
                     </div>
                 </div>
                 <div class="main-top-40">
                     <p class="call-email">
                         <span>Call Us: </span>
-                        <a href="tel:+012 345 6789">+012 345 6789</a>
-                            <div class="search-bar" onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' })">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
-                            <div>
-                                <span>Email Us</span>
-                                <a href="mailto:mikaela@gobardown.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                        <a class="icon" href="tel:+012 345 6789"><i class="fa-solid fa-phone"></i> +012 345 6789</a>
+                            <div class="call-email">
+                                <span>Email Us: </span>
+                                <a class="icon" href="mailto:mikaela@gobardown.com"><i class="fa fa-envelope" aria-hidden="true"></i> mikaela@gobardown.com</a>
                             </div>
                     </p>
                 </div>
@@ -113,8 +188,13 @@
                 <div class="navi">
                     <[{"snippet":"nav_main_large"}]>
                 </div>
-                <div class="user">
+                <div id="user">
                     <[{"snippet":"nav_user"}]>
+                </div>
+                <div>
+                    <div class="search-bar" onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' })">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
                 </div>
             </div>
         </div>
