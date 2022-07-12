@@ -1,0 +1,279 @@
+<style>
+    #in_container{
+       font-family: 'Poppins', sans-serif !important;
+       font-size: 12px !important;
+   }
+    td{
+      line-height: 55px !important;
+      font-size: 14px !important;
+  }
+ </style>
+{% set_title 'Order Proof' %}
+<div id="in_container">
+   <div style="display: block; page-break-after: avoid;">
+       <div id="in_pre">
+           {% logo 90 90 %}
+           <center style="font-size: 22px; font-weight: bold; color: #000;">
+               {% if is_quote %}
+               RECEVING/PICKING/PACKING LIST
+               {% else %}
+               RECEVING/PICKING/PACKING LIST
+               {% endif %}
+           </center>
+       </div>
+       <div id="in_header" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
+           <div class="details" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
+               <h1>
+                   {% if from.account.company %}{{ from.account.company }}{% endif %}
+                   {% if from.fc_settings.company_identification_number %}
+                 <br>802156455RT0001
+                 {% endif %}
+                   {% if from.account.has_address? %}
+                   <span>
+                       {{ from.account.address }} {{ from.account.city }}, {{ from.account.state }}
+                       {{ from.account.zip }}<br />
+                       {{ from.account.country_name }}
+                   </span>
+                   {% endif %}
+               </h1>
+           </div>
+           <div class="order" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
+               <ul>
+                   {% if is_quote %}
+                   <li>
+                       <h2><label>Quote #</label><span>{{order.quote_number}}</span></h2>
+                   </li>
+                   {% elsif order.is_invoiced? %}
+                   <li>
+                       <h2><label>INVOICE #</label><span>{{order.order_number}}</span></h2>
+                   </li>
+                   {% else %}
+                   <li>
+                       <h2><label>Order #</label><span>{{order.order_number}}</span></h2>
+                   </li>
+                   {% endif %}
+
+                   {% if order.has_po_number? %}
+                   <li><label>PO Number</label><span>{{ order.po_number }}</span></li>
+                   {% endif %}
+                   {% if is_quote %}
+                   <li><label>Date</label><span>{{ order.date_quoted | date: "%d/%b/%Y"}}</span></li>
+                   <li><label>Valid Until</label><span>{{ order.date_quote_valid_until | date: "%d/%b/%Y"}}</span></li>
+                   {% else %}
+                   <li><label>Date</label><span>{{ "now" | date: "%d/%b/%Y"}}</span></li>
+                   {% endif %}
+               </ul>
+           </div>
+       </div>
+       <div id="in_customer" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
+        {% if (order.get_shipping_detail) and (order.get_shipping_detail.use_shipping_details) %}
+        <div class="shipping">
+            <h3>Shipping Address</h3>
+            <h4>
+              {{ order.get_shipping_detail.full_name }}
+            </h4>
+            <h4>
+              {{ order.get_shipping_detail.company }}
+            </h4>
+            <h4>
+             {{order.get_shipping_detail.address}}
+            </h4>
+            <span>
+                {{order.get_shipping_detail.city}}, {{order.get_shipping_detail.state}}
+                {{order.get_shipping_detail.country_name}} {{ order.get_shipping_detail.zip }}
+            </span>
+            <h4>
+                <b>PH: {{ order.get_shipping_detail.phone_number }}</b> 
+            </h4>
+        </div>
+        {% else %}
+        <div class="shipping">
+            <h3>Shipping Address</h3>
+            <h4>
+             {{ customer.full_name }}
+            </h4>
+            <h4>
+             {% if customer.company %}{{ customer.company }}{% endif %}
+             </h4>
+            <h4>
+              {{customer.address}}
+              </h4>
+              <span>
+                {{customer.city}}, {{customer.state}} {{customer.country_name}} {{ customer.zip }}
+                </span>
+          <h4>
+                PH: {{ customer.phone_number }}
+            </h4>
+        </div>
+        {%endif%}
+    </div>
+   </div>
+
+
+   {% for item in order.main_items %}
+   <div class="image_row" style="display:block;page-break-inside:avoid;" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
+       <div style="float: left !important;">
+           <h3 style="font-size: 14px !important;">
+               {% if (item.supplier_product) and (item.is_not_freeform?) %}
+               {{ item.supplier_product.product_code }} -
+               {% endif %}
+               {{ item.product_name }}
+           </h3>
+           {% if (item.is_freeform?) or (item.is_asi?) %}
+           {% if item.has_extra_options? %}
+           <p>{{ item.extra_options}}</p>
+           {% endif %}
+           {% endif %}
+           <ul class="image">
+               {% for view in item.views %}
+               <li>
+                   <label>{{ view.name }}</label>
+                   <img style="height: 200px !important; width: 200px !important;" src="{{ view.image_url_300}}"
+                       alt="[]" />
+               </li>
+               {% endfor %}
+               {% if (item.is_asi?) %}
+               <li>
+                   <img style="height: 200px !important; width: 200px !important;"
+                       src="/manage/asi/image/{{ item.asi_image }}?size=normal" width="200px" alt="[]" />
+               </li>
+
+               {% endif %}
+               <li>
+                <label>Total Qty</label>
+                {{ item.qty }}
+                </li>
+               {% for field in item.extra_fields %}
+               <li>
+                   <label>{{ field.name }}</label>
+                   {{ field.print_text }}
+               </li>
+               {% endfor %}
+               {% if (item.is_freeform?) %}
+               <li>
+                   <label>Color</label>
+                   {{ item.free_form_color }}
+               </li>
+               {% else %}
+               <li>
+                   <label>Colors</label>
+                   <ul class="color_list">
+                       {% for color in item.chosen_colors %}
+                       <li>
+                           <span class="colorbox">
+                               <span style="background: {{color.color}}; height: 100%;">
+                                   {% if color.swatch_image_20 %}
+                                   <img src="{{ color.swatch_image_20 }}"
+                                       style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
+                                   {% else %}
+                                   &nbsp;
+                                   {% endif %}
+                               </span>
+                           </span> {{color.color_name}}
+                       </li>
+                       {% endfor %}
+                   </ul>
+               </li>
+               {% endif %}
+               
+
+               {% if item.has_screens? %}
+               <h3>Screen Prints</h3>
+
+               {% for process in item.get_screen_printing_processes %}
+               <li>
+                   <label>{{ process.full_path }}</label>
+                   {{ process.screen.name }}.
+                   {% if process.colorway %}
+                   Colorway {{ process.colorway }}.
+                   {% endif %}
+                   {% if process.include_whitebase? %}
+                   (including whitebase)
+                   {% endif %}
+               </li>
+               {% endfor %}
+           </ul>
+           {% endif %}
+       </div>
+      
+       <div>
+           <div class="details" style="font-size: 14px !important; font-family: 'Poppins', sans-serif !important;">
+               <table style="width:600px !important; border: solid;">
+                   <tr>
+                       {% if item.size_field %}
+                       <th style="width: 160px !important;">Sizes</th>
+                       {% endif %}
+                       <th>Qty Received</th>
+                       <th>Qty Picked</th>
+                       <th>Qty Shipped</th>
+                   </tr>
+                   <tr style="text-align: left !important;">
+                       
+                       {% if item.size_field %}
+                       <!-- {% assign row_count = 1 %} -->
+                       {% for size in item.sizes %}
+                       <td style="font-size: 16px !important;" style="text-align: left !important; width: 170px !important;">{{ item.sizes }}</td>
+                       <!-- {% assign row_count = row_count | plus:1 %} -->
+                       {% endfor %}
+                       {% endif %}
+                       <td> </td>
+                       <td> </td>
+                       <td> </td>
+                       
+                   </tr>
+                  
+               </table>
+           </div>
+       </div>
+   </div>
+   {% endfor %}
+   {% if show_fulfillment_details %}
+   <div class="fulfillment_details" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
+       <h2>This order has been fulfilled by:</h2>
+       <h1>
+           {% if fulfillment_system.fc_settings.company_name %}{{ fulfillment_system.fc_settings.company_name }}{% endif %}
+           {% if fulfillment_system.fc_settings.company_identification_number %}<br />{{ fulfillment_system.fc_settings.company_identification_number }}{% endif %}
+           <span>
+               {{ fulfillment_system.fc_settings.address }} {{ fulfillment_system.fc_settings.city }},
+               {{ fulfillment_system.fc_settings.state }} {{ fulfillment_system.fc_settings.zip }}<br />
+               {{ fulfillment_system.fc_settings.country_name }}
+           </span>
+           <!-- <a href="http://{{ fulfillment_system.primary_domain }}">http://{{ fulfillment_system.primary_domain }}</a> -->
+       </h1>
+   </div>
+   {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
