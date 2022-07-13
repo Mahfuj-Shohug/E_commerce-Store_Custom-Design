@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="wf-loading">
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        #header {
+            margin-top: 0px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        #header .logo-bar {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .top-bar {
+            width: 100%;
+            height: 15px;
+            background-color: #FEC621;
+        }
+
+        .logo-bar {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .grid-container {
+            height: auto;
+            display: grid;
+            grid-template-columns: auto 50% 150px;
+        }
+
+        .grid-container-nav {
+            text-align: center !important;
+            height: auto;
+        }
+
+        .navigation-bar {
+            border-top: 2px solid #FEC621;
+            height: 60px !important;
+            padding-top: 15px;
+        }
+
+        .main-top-50 {
+            text-align: left;
+            padding-left: 110px;
+        }
+
+        .main-top-40 {
+            text-align: right !important;
+            padding-right: 20px;
+        }
+
+        .main-top-10 {
+            text-align: left;
+        }
+
+        .search-bar {
+            cursor: pointer;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .dn-shopping-cart-icon-over-right-container:before {
+            border: 2px solid #fff;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: #FEC621;
+            color: #000;
+            padding-top: 13px;
+            padding-left: 12px;
+            font-size: 17px;
+        }
+
+        .dn-inline-header nav.dn-nav-main {
+            text-align: center !important;
+        }
+
+        #site-logo-large img {
+            height: 48px !important;
+            width: 150px !important;
+        }
+
+        .call-email {
+            margin-bottom: 0px !important;
+            padding-left: 10px;
+        }
+
+        .call-email span {
+            color: #000;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .call-email a {
+            color: #CC2647;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .icon i {
+            color: #000;
+            font-size: 18px;
+        }
+
+        .fa-magnifying-glass:before,
+        .fa-search:before {
+            font-size: 20px;
+        }
+
+        .dn-shopping-cart-icon-over-right-container span {
+            margin-right: 105px;
+        }
+
+        .dn-inline-popup.dn-search-page-top {
+            width: 30% !important;
+            left: 50% !important;
+            top: 80px !important;
+        }
+
+        #properties_product_details .dn-price-container {
+            float: right;
+            padding-right: 3px;
+            padding-left: 4px;
+        }
+
+        #properties_product_details .dn-unit-price {
+            font-weight: bold;
+            display: flex;
+        }
+
+        #properties_product_details .dn-unit-price::after {
+            content: "; Total " !important;
+            font-weight: normal !important;
+        }
+
+        .dn-inline-popup.dn-search-page-top .dn-close {
+            display: inline-block !important;
+            width: 0% !important;
+            height: 0px !important;
+            vertical-align: top !important;
+            text-align: right !important;
+        }
+
+        .dn-product-display .dn-product-qty-breakdown-container div.dn-product-discounts-container {
+            border: 2px solid #000000;
+            padding: 10px;
+            box-shadow: 10px 5px 15px #555353;
+            font-weight: bold;
+            background: #fff;
+        }
+
+        .custom-div {
+            display: grid;
+            grid-template-columns: auto 160px;
+        }
+
+        .dn-nav-login {
+            float: left;
+            padding-left: 25px;
+        }
+
+        .dn-nav-myaccount {
+            float: left;
+            display: block;
+        }
+
+        header .dn-small-header .dn-menu-icon,
+        header .dn-small-header-always .dn-menu-icon {
+            color: #000 !important;
+            padding-top: 10px !important;
+        }
+
+        .dn-search-icon:before {
+            color: #000 !important;
+            line-height: 2 !important;
+        }
+
+        .dn-phone-icon:before {
+            color: #000 !important;
+            line-height: 2 !important;
+        }
+
+        @media (max-width: 767px) {
+            .navigation-bar {
+                display: none !important;
+            }
+
+            .logo-bar {
+                display: none !important;
+            }
+        }
+
+        #dn_bpf_manufacturer_container h3::before {
+            content: "Filter By Year" !important;
+            font-weight: bold !important;
+            color: #000 !important;
+            font-size: 16px !important;
+            display: inline-block;
+        }
+
+        #dn_bpf_manufacturer_container h3 {
+            color: #fff !important;
+            font-size: 7px !important;
+        }
+
+        .dn-filter-list {
+            margin-bottom: 25px !important;
+            line-height: 26px !important;
+        }
+
+        .dn-filter-list-value.dn-depth-3 {
+            margin-left: 0px !important;
+        }
+
+        .dn-filter-list-value.dn-depth-2 {
+            display: none !important;
+        }
+    </style>
+    <[{"snippet":"system_style_sheets"}]>
+        <[{"snippet":"system_head_js"}]>
+            <title>
+                <[{"snippet":"title"}]>
+            </title>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+            <[{"snippet":"system_head_meta_tags"}]>
+                <[{"snippet":"favicon"}]>
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+                        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+                        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="dn-site">
+    <header id="header">
+        <[{"snippet":"pos_message_header"}]>
+            <div class="top-bar">
+            </div>
+            <div class="logo-bar">
+                <div class="grid-container">
+                    <div class="main-top-50">
+                        <div id="site-logo-large">
+                            <a href="/">
+                                <img src="https://brownuniversity.secure-decoration.com/rshared/ssc/i/riq/6997411/200/200/ffffff/0/0/image.png?ts=1656495098"
+                                    alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-top-40">
+                        <p class="call-email">
+                            <span>Call Us or Email Us </span>
+                            <a class="icon" href="tel:+012 345 6789"><i class="fa-solid fa-phone"></i> +012 345 6789</a>
+                            <span>and</span>
+                            <a class="icon" href="mailto:mikaela@gobardown.com"> mikaela@gobardown.com</a>
+                        </p>
+                        <div class="custom-div" style="margin-top: 5px;">
+                            <div class="search-bar"
+                                onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' })">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="user">
+
+                                <[{"snippet":"nav_user"}]>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-top-10">
+                        <span>
+                            <div class="dn-shopping-cart-icon-over-right-container"
+                                onclick="dnInlinePopup(this, 'dn_cart_over_right_popup', { valign:'none', halign: 'none', backgroundClass: 'dn-cart-over-right', delayBackground:400});">
+                                <span data-cart-items="<[{" variable":"CART.QTY"}]>"><[{"variable":"CART.QTY"}]></span>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-bar">
+                <div class="grid-container-nav">
+                    <div>
+                        <[{"snippet":"nav_main_large"}]>
+                    </div>
+                </div>
+            </div>
+            <div class="dn-small-header">
+                <div class="dn-small-logo-container" id="site-logo-small">
+                    <[{"widget":{"settings":{"size":"small"},"code":"site_logo","id":"small_logo"}}]>
+                </div>
+                <div class="dn-nav-phone"><a href="tel:<[{" variable":"STORE.PHONE"}]>" class="dn-phone-icon"></a>
+                </div>
+                <div class="dn-nav-search">
+                    <div class="dn-search-icon"
+                        onclick="dnInlinePopup(this, 'dn_search_popup_pt', { valign: 'none', halign:'none', backgroundClass: 'dn-faded-bg' });">
+                    </div>
+                </div>
+                <div class="dn-menu-icon dn-behaviour" data-behaviour="dropdownMenu"
+                    data-dropdown-menu-id="main_nav_dropdown"
+                    data-dropdown-menu-class="dn-nav-dropdown-container dn-nav-main-dropdown-container dn-nav-main-dropdown-small">
+                    <div class="dn-dropdown-anchor"></div>
+                </div>
+            </div>
+    </header>
+    <div class="dn-content">
+        <[{"snippet":"alerts"}]>
+            <[{"snippet":"application"}]>
+    </div>
+    <footer dynamic_area="footer">
+        <!-- remove the 'dynamic_area' attribute if you want to change the html of the footer -->
+        <div class="dn-page-section dn-page-section-24f9d21b-af43-4f34-b44d-9eec788688b0 dn-wrapper dn-page-section-margin-top-none dn-page-section-margin-bottom-none dn-use-page-margin dn-limit-content-width"
+            id="dn_section_24f9d21b-af43-4f34-b44d-9eec788688b0" style="z-index: 3;">
+            <div class="dn-page-section-margin">
+                <div class="dn-page-section-content">
+                    <div class="dn-padding-container" id="dn_s_pc_24f9d21b-af43-4f34-b44d-9eec788688b0">
+                        <!--
+  -->
+                        <div class="dn-page-columns-container">
+                            <!--
+  -->
+                        </div>
+                        <!--
+-->
+                    </div>
+                </div>
+            </div>
+            <div class="dn-background-container">
+                <div>
+                    <div class="dn-background-image-container"></div>
+                </div>
+            </div>
+        </div>
+        <div class="dn-page-section dn-page-section-footer1 dn-page-section-cols-1 dn-page-section-spacing-xlarge dn-page-section-margin-top-default dn-page-section-margin-bottom-none dn-use-page-margin"
+            id="dn_section_footer1" style="z-index: 2;">
+            <div class="dn-page-section-margin">
+                <div class="dn-page-section-content">
+                    <div class="dn-padding-container" id="dn_s_pc_footer1">
+                        <!--
+  -->
+                        <div class="dn-page-columns-container">
+                            <!--
+  -->
+                        </div>
+                        <!--
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <[{"snippet":"pos_message_footer"}]>
+
+    </footer>
+    <div class="dn-inline-popup dn-shopping-cart-icon-over-right-popup" id="dn_cart_over_right_popup">
+        <[{"widget":{"settings":{"show_thumbnail":true,"show_name":true,"show_item_link":true,"thumbnail_size":100,"show_summary":0,"empty_message":"Your
+            cart is empty","empty_quote_message":"Your quote is
+            empty","show_price":true,"show_checkout_link":true},"code":"shopping_cart","id":"cart"}}]>
+    </div>
+    <div class="dn-inline-popup dn-search-page-top" id="dn_search_popup_pt">
+        <form action="/search/results" method="get">
+            <div class="dn-search-field-container">
+                <input type="text" name="query" id="search" class="dn-search-field">
+            </div>
+            <input type="submit" value="as" style="display:none;" />
+            <div class="dn-btn dn-btn-std dn-styled" onclick="dnSubmitForm(this);">
+                <div class="dn-btn-valign"></div>
+                <div class="dn-btn-icon"></div>
+                <div class="dn-btn-label"><span>Search</span></div>
+            </div>
+            <div class="dn-close" onclick="dnCloseInlinePopup();"></div>
+        </form>
+    </div>
+</body>
+
+</html>
