@@ -3,7 +3,13 @@
        font-family: 'Poppins', sans-serif !important;
        font-size: 12px !important;
    }
-    td{
+  table, tr, th, td{
+  	border: 1px solid #000;
+  }
+   .item-size2{
+        border: 1px solid red  !important;
+    }
+    .item-size1{
       line-height: 55px !important;
       font-size: 14px !important;
   }
@@ -66,28 +72,47 @@
            </div>
        </div>
        <div id="in_customer" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
-           {% if (order.get_shipping_detail) and (order.get_shipping_detail.use_shipping_details or order.get_shipping_detail.company) %}
-           <div class="shipping">
-               <h3>Shipping Address</h3>
-               <h4>
-                 {{ order.get_shipping_detail.full_name }}
-               </h4>
-               <h4>
-                 {{ order.get_shipping_detail.company }}
-               </h4>
-               <h4>
-                {{order.get_shipping_detail.address}}
-               </h4>
-               <span>
-                   {{order.get_shipping_detail.city}}, {{order.get_shipping_detail.state}}
-                   {{order.get_shipping_detail.country_name}} {{ order.get_shipping_detail.zip }}
-               </span>
-               <h5>
-                   <b>PH: {{ order.get_shipping_detail.phone_number }}</b> 
-               </h5>
-           </div>
-           {%endif%}
-       </div>
+        {% if (order.get_shipping_detail) and (order.get_shipping_detail.use_shipping_details) %}
+        <div class="shipping">
+            <h3>Shipping Address</h3>
+            <h4>
+              {{ order.get_shipping_detail.full_name }}
+            </h4>
+            <!-- <h4>
+              {{ order.get_shipping_detail.company }}
+            </h4> -->
+            <h4>
+             {{order.get_shipping_detail.address}}
+            </h4>
+            <span>
+                {{order.get_shipping_detail.city}}, {{order.get_shipping_detail.state}}
+                {{order.get_shipping_detail.country_name}} {{ order.get_shipping_detail.zip }}
+            </span>
+            <h4>
+                <b>PH: {{ order.get_shipping_detail.phone_number }}</b> 
+            </h4>
+        </div>
+        {% else %}
+        <div class="shipping">
+            <h3>Shipping Address</h3>
+            <h4>
+             {{ customer.full_name }}
+            </h4>
+            <!-- <h4>
+             {% if customer.company %}{{ customer.company }}{% endif %}
+             </h4> -->
+            <h4>
+              {{customer.address}}
+              </h4>
+              <span>
+                {{customer.city}}, {{customer.state}} {{customer.country_name}} {{ customer.zip }}
+                </span>
+          <h4>
+               <b>  PH: {{ customer.phone_number }} </b> 
+            </h4>
+        </div>
+        {%endif%}
+    </div>
    </div>
 
 
@@ -179,35 +204,83 @@
       
        <div>
            <div class="details" style="font-size: 14px !important; font-family: 'Poppins', sans-serif !important;">
-               <table style="width:600px !important; border: solid;">
+               <table style="width:600px !important; border: 1px solid #000 !important;">
                    <tr>
                        {% if item.size_field %}
-                       <th style="width: 160px !important;">Sizes</th>
+                       <th style="width: 160px !important; text-align: center !important; border: 1px solid !important;">Sizes</th>
                        {% endif %}
-                       <th>Qty Received</th>
-                       <th>Qty Picked</th>
-                       <th>Qty Shipped</th>
+                       <th style="text-align: center !important;">Qty Received</th>
+                       <th style="text-align: center !important;">Qty Picked</th>
+                       <th style="text-align: center !important;">Qty Shipped</th>
                    </tr>
-                   <tr style="text-align: left !important;">
+                   <tr class="item-size1" style="text-align: left !important;">
                        
                        {% if item.size_field %}
                        <!-- {% assign row_count = 1 %} -->
                        {% for size in item.sizes %}
-                       <td style="font-size: 16px !important;" style="text-align: left !important; width: 170px !important;">{{ item.sizes }}</td>
+                       <td class="item-size1" style="font-size: 16px !important;" style="text-align: left !important; width: 170px !important; border: 1px solid !important;">{{ item.sizes }}</td>
                        <!-- {% assign row_count = row_count | plus:1 %} -->
                        {% endfor %}
                        {% endif %}
-                       <td> </td>
-                       <td> </td>
-                       <td> </td>
+                       <td class="item-size1">.</td>
+                       <td class="item-size1"></td>
+                       <td class="item-size1"></td>
                        
                    </tr>
                   
                </table>
+               <table class="item-size2" style="width:600px !important; margin-top: 10px !important;">
+                <tr class="item-size2" style="text-align: center !important;">
+                    <th class="item-size2" style="text-align: center !important;"><b>Box 1</b></th>
+                    <th class="item-size2" style="text-align: center !important;"><b>Box 2</b></th>
+                    <th class="item-size2" style="text-align: center !important;"><b>Box 3</b></th>
+                </tr>
+                <tr class="item-size2" style="text-align: left !important;">
+                    <td class="item-size2">
+                        <h4>W: </h4>
+                    </td>
+                    <td class="item-size2">
+                        <h4>W: </h4>
+                    </td>
+                    <td class="item-size2">
+                        <h4>W: </h4>
+                    </td>
+                </tr>
+                <tr class="item-size2" style="text-align: left !important;">
+                    <td class="item-size2" >
+                        <h4>D: </h4>
+                    </td>
+                    <td class="item-size2" >
+                        <h4>D: </h4>
+                    </td>
+                    <td class="item-size2" >
+                        <h4>D: </h4>
+                    </td>
+                </tr>
+            </table>
            </div>
        </div>
    </div>
    {% endfor %}
+  <div class="notes">
+           {% if order.invoice_note == blank && order.customer_notes == blank %}
+            <h3>Notes</h3>
+             N/A
+           {% endif %}
+          {% if order.invoice_note != blank %}
+            <h3>Notes</h3>
+          {% elsif order.customer_notes != blank %}
+            <h3>Notes</h3>
+          {% endif %}
+          {% if order.invoice_note %}
+            <span style="background-color: yellow; color: red; font-size: 14px !important;">{{ order.formatted_invoice_note }}</span>
+          {% endif %}
+          {% if order.customer_notes %}
+            <span style="background-color: yellow; color: red; font-size: 14px !important;">{{ order.formatted_customer_notes }}</span>
+          {% endif %}
+        </div>
+
+ 
    {% if show_fulfillment_details %}
    <div class="fulfillment_details" style="font-size: 12px !important; font-family: 'Poppins', sans-serif !important;">
        <h2>This order has been fulfilled by:</h2>
@@ -219,42 +292,8 @@
                {{ fulfillment_system.fc_settings.state }} {{ fulfillment_system.fc_settings.zip }}<br />
                {{ fulfillment_system.fc_settings.country_name }}
            </span>
-           <!-- <a href="http://{{ fulfillment_system.primary_domain }}">http://{{ fulfillment_system.primary_domain }}</a> -->
        </h1>
    </div>
-   {% endif %}
+   {% endif %} 
+ 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
