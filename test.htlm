@@ -13,12 +13,6 @@
       line-height: 55px !important;
       font-size: 14px !important;
   }
-  .Internal_note span{
-    background-color: yellow;
-    color: red;
-    font-weight: bold;
-    font-size: 12px;
-  }
  </style>
 {% set_title 'Order Proof' %}
 <div id="in_container">
@@ -268,36 +262,7 @@
        </div>
    </div>
    {% endfor %}
-   <div class="Internal_note">
-   {% if (note.is_internal_note?) %}
-   <h3>Internal Notes: </h3>
-  
-    <span>{{ note.created_at | date: "%b %d, %Y %I:%M %p"}} - {{ note.user_name }} - {{ note.message }} </span>
-   
-    <span>{{ note.created_at | date: "%b %d, %Y %I:%M %p"}} - {{ note.user_name }} - {{ note.content }} </span>
-   
-    {% else %}
-    <span>{{ order.formatted_invoice_note }}</span>
-    {% endif %}
-    </div>
-    
-  <!-- <div class="notes">
-           {% if order.invoice_note == blank && order.customer_notes == blank %}
-            <h3>Notes</h3>
-             N/A
-           {% endif %}
-          {% if order.invoice_note != blank %}
-            <h3>Notes</h3>
-          {% elsif order.customer_notes != blank %}
-            <h3>Notes</h3>
-          {% endif %}
-          {% if order.invoice_note %}
-            <span style="background-color: yellow; color: red; font-size: 14px !important;">{{ order.formatted_invoice_note }}</span>
-          {% endif %}
-          {% if order.customer_notes %}
-            <span style="background-color: yellow; color: red; font-size: 14px !important;">{{ order.formatted_customer_notes }}</span>
-          {% endif %}
-        </div> -->
+
 
  
    {% if show_fulfillment_details %}
@@ -316,4 +281,3 @@
    {% endif %} 
  
 </div>
-
